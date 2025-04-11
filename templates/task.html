@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Task Manager</h2>
+<form method="post" action="/task/manage">
+    <label for="task_name">Task Name:</label>
+    <input type="text" id="task_name" name="task_name" required>
+    <br>
+    <label for="deadline">Deadline:</label>
+    <input type="date" id="deadline" name="deadline" required>
+    <br>
+    <button type="submit">Add Task</button>
+</form>
+
+{% if result %}
+<h3>Task Details:</h3>
+<div>
+    <p><strong>Task ID:</strong> {{ result.task_id }}</p>
+    <p><strong>Status:</strong> {{ result.status }}</p>
+    <p><strong>Priority:</strong> {{ result.priority }}</p>
+    <p><strong>Reminders:</strong></p>
+    <ul>
+        {% for reminder in result.reminders %}
+        <li>{{ reminder.time }} ({{ reminder.type }})</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+{% endblock %}

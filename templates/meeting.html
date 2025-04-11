@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Meeting Scheduler</h2>
+<form method="post" action="/meeting/schedule">
+    <label for="title">Meeting Title:</label>
+    <input type="text" id="title" name="title" required>
+    <br>
+    <label for="participants">Participants (comma-separated emails):</label>
+    <input type="text" id="participants" name="participants" required>
+    <br>
+    <button type="submit">Schedule Meeting</button>
+</form>
+
+{% if result %}
+<h3>Scheduled Meeting:</h3>
+<div>
+    <p><strong>Success:</strong> {{ result.success }}</p>
+    {% if result.success %}
+    <p><strong>Meeting Title:</strong> {{ result.meeting_details.title }}</p>
+    <p><strong>Description:</strong> {{ result.meeting_details.description }}</p>
+    <p><strong>Start Time:</strong> {{ result.meeting_details.start_time }}</p>
+    <p><strong>End Time:</strong> {{ result.meeting_details.end_time }}</p>
+    <p><strong>Participants:</strong></p>
+    <ul>
+        {% for participant in result.meeting_details.participants %}
+        <li>{{ participant }}</li>
+        {% endfor %}
+    </ul>
+    <p><strong>Meeting ID:</strong> {{ result.meeting_details.id }}</p>
+    <p><strong>Scheduled Time:</strong> {{ result.scheduled_time }}</p>
+    {% else %}
+    <p><strong>Message:</strong> {{ result.message }}</p>
+    {% endif %}
+</div>
+{% endif %}
+{% endblock %}

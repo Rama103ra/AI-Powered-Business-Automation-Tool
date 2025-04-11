@@ -1,0 +1,27 @@
+ai_business_automation/
+├── config/
+│   ├── __init__.py
+│   └── settings.py
+├── core/
+│   ├── __init__.py
+│   ├── ai_engine.py
+│   ├── email_processor.py
+│   ├── meeting_scheduler.py
+│   └── task_manager.py
+├── data/
+│   ├── __init__.py
+│   └── data_processor.py
+├── integrations/
+│   ├── __init__.py
+│   ├── calendar_api.py
+│   ├── email_api.py
+│   └── task_api.py
+├── models/
+│   ├── __init__.py
+│   ├── email_model.py
+│   └── scheduler_model.py
+├── utils/
+│   ├── __init__.py
+│   └── helpers.py
+├── requirements.txt
+└── main.py
